@@ -1,27 +1,36 @@
-<MyGrid>
+<TextInput>:
+    font_size: 23
     
-    post_cod: post_cod
-    country_cod: country_cod
-    
-    GridLayout:
-        cols: 1
-        size: root.width, root.height
+<MyFloat>:
 
-        GridLayout:
-            cols: 2  
+    post_cod : post_cod
+    country_cod : country_cod
+    Label:
+        text: "Código Postal"
+        pos_hint: {'x': -0.28, 'y': -0.126}
         
-            Label:
-                text: "Código Postal"
-            TextInput:
-                id: post_cod
-                multiline:False
-            Label:
-                text: "Código País"
-            TextInput:
-                id: country_cod
-                multiline: False
+    TextInput:
+        multiline: False
+        id: post_cod
+        size_hint: (.2, .04)
+        pos_hint: {'x': .3 , 'y': .35}
+    Label:
+        text: "Código País"
         
-        Button:
-            text: "Set Up"
-            on_press: root.btn()
+        pos_hint: {'x': .09, 'y': -0.126}
+        
+    TextInput:
+        size_hint: (.2, .04)
+        pos_hint: {'x': .65, 'y': .35}
+        
+        multiline: False
+        id: country_cod
+
+    Button:
+        text: "Let's GO"
+        size_hint: .4, .2
+        on_press: root.start()
+    
+    
+
     

@@ -3,12 +3,12 @@ import requests
 from kivy.app import App
 from kivy.uix.widget import Widget
 from kivy.properties import ObjectProperty
+from kivy.uix.floatlayout import FloatLayout
 
 
 
-def get_precip():
-    postal_code = input("postal code:")
-    country_code = input("Country code(i.e ES, DE, FR)")
+def get_precip(postal_code, country_code):
+    
 
     access_key = "e0869c46affe410a85b7bd30345383e5"
 
@@ -26,23 +26,30 @@ def get_precip():
         msg = "Doesn't look like you'll need an umbrella today..."
 
     print(type(data))
-    return "Chance of rain is " + str(precip)  +" : " + msg
-get_precip()
+    print("Chance of rain is " + str(precip)  +" : " + msg)
 
-class MyGrid(Widget):
-    
+
+
+
+class MyFloat(FloatLayout):
     post_cod = ObjectProperty(None)
     country_cod = ObjectProperty(None)
-
-    def btn(self):
-        print("Código Postal: ", self.post_cod.text, "Código País:", self.country_cod.text)
-
     
+    def start(self):
+        postal_code = self.post_cod.text
+        country_code = self.country_cod.text
+
+        return get_precip(postal_code, country_code)
+
+
+
+
 
 
 class Umbrella(App):
+    
     def build(self):
-        return MyGrid()
+        return MyFloat()
 
 if __name__ == "__main__":
     Umbrella().run()
