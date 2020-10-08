@@ -1,0 +1,27 @@
+<MyGrid>
+    
+    post_cod: post_cod
+    country_cod: country_cod
+    
+    GridLayout:
+        cols: 1
+        size: root.width, root.height
+
+        GridLayout:
+            cols: 2  
+        
+            Label:
+                text: "Código Postal"
+            TextInput:
+                id: post_cod
+                multiline:False
+            Label:
+                text: "Código País"
+            TextInput:
+                id: country_cod
+                multiline: False
+        
+        Button:
+            text: "Set Up"
+            on_press: root.btn()
+    

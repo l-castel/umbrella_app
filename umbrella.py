@@ -1,5 +1,10 @@
 import json
 import requests
+from kivy.app import App
+from kivy.uix.widget import Widget
+from kivy.properties import ObjectProperty
+
+
 
 def get_precip():
     postal_code = input("postal code:")
@@ -23,3 +28,21 @@ def get_precip():
     print(type(data))
     return "Chance of rain is " + str(precip)  +" : " + msg
 get_precip()
+
+class MyGrid(Widget):
+    
+    post_cod = ObjectProperty(None)
+    country_cod = ObjectProperty(None)
+
+    def btn(self):
+        print("Código Postal: ", self.post_cod.text, "Código País:", self.country_cod.text)
+
+    
+
+
+class Umbrella(App):
+    def build(self):
+        return MyGrid()
+
+if __name__ == "__main__":
+    Umbrella().run()
